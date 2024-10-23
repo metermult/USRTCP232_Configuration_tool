@@ -1,6 +1,7 @@
 # USR-TCP232-302 Controller
 
-Hello! This is a tool I made that can be integrated into a larger script base for configuring RS232 converters that are networked. Specifically the USR-TCP232-302. I would imagine this would also work across other PUSR devices but it has yet to be attempted. This allows an admin/user to make a few requests to one of these devices and configure them without having to access the web UI. 
+Hello! This is a tool I made that can be integrated into a larger script base for configuring RS232 converters that are networked. Specifically the USR-TCP232-302. I would imagine this would also work across other PUSR devices but it has yet to be attempted. This allows an admin/user to make a few requests to one of these devices and configure them without having to access the web UI. The purpose of this device is to have a networked rs232 converter so that you do not need to use USB ports and
+can instead use a networked tool and access the UART/RS232 interface through the network. Much easier IMO than having large dupont wires going everywhere and not having enough USB ports on a host machine. 
 
 ## Concepts
 
