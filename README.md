@@ -4,7 +4,7 @@ Hello! This is a tool I made that can be integrated into a larger script base fo
 
 ## Concepts
 
-Using get requests, one can use a script to control a network of tcp to rs232 traffic converters and communicate out to hosts. This allows for a non web interface way to communicate with the device and can be nested in a larger script for configuration. This method works by taking RS232 traffic and sending it to a predefined host:port configured in the webserver. The webserver is very minimal, making it easy to configure and setup for testing purposes. The creds across devices will be `admin:admin` as they are default. The device can also maintain a static IP after a reboot but will come up on `192.168.0.7` if the reset button is pressed. Which makes adding to a specific VLAN very easy and doable. 
+Using GET requests, one can use a script to control a set of tcp to rs232 traffic converters and communicate out to hosts. This allows for a non web interface way to communicate with the device and can be nested in a larger script for configuration. This device works by taking RS232 traffic and sending it to a predefined host:port configured in the webserver. The webserver is very minimal, making it easy to configure and setup for testing purposes. The creds across devices will be `admin:admin` as they are default. The device can also maintain a static IP after a reboot but will come up on `192.168.0.7` if the reset button is pressed. Which makes adding to a specific VLAN very easy and doable. 
 
 ## Webs
 
@@ -12,7 +12,7 @@ In firefox you can simply plugin the IP of the device to access. Again, pressing
 
 ![web](/images/WebInterface.png)
 
-The only thing we care about is the actual requests being sent though. End goal is to automate all of this so it is best to start using `curl` or some other web interactive program or library to start navigating this device and configuring it how we need it. 
+The only thing we care about is the actual requests being sent though. End goal is to automate all of this so it is best to start using `curl` or some other web interactive program or library in python to start navigating this device and configuring it how we need it. 
 
 ## Interaction
 
@@ -37,11 +37,10 @@ usage: config_rs232.py [-h] [-d DEST] [-s SOURCE] [-dpt DPORT] [-spt SPORT]
    -spt SPORT, --sport SPORT
                          Source port
 ```
-                         
+
 The configuration script will make 2 GET requests and can be changed statically for values that are not passed as args (this is because these values can be messed with but may be needed for a larger script). Yes, in order to make a valid request I have found that sending less than all 20+ of these parameters will cause the device to drop the request and configurations will not be set. Then after the 20+ requests are sent, a reset is sent and the device will come up with its new configurations. 
 
 ## RS232/TTL
 
 After configuring the device, start a netcat listener on your host with `nc -l [port]` and you should have an interactive shell with the endpoint. 
-
 
